@@ -1,0 +1,17 @@
+[Unit]
+Description=Controls cooling fan on GPIO
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /home/orangepi/opifan/fan.py
+ExecStop=/home/orangepi/opifan/stop
+WorkingDirectory=/home/orangepi/opifan/
+Restart=always
+PIDFile=/var/run/opifan.pid
+OOMScoreAdjust=-100
+TimeoutSec=20
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
